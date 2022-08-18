@@ -1,9 +1,17 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { useId } from "react"
+import Script from "next/script"
+import { GetServerSideProps, NextPage } from "next"
 
-const Home: NextPage = () => {
+type HomeProps = {
+  browserTimingScript: string
+}
+const Home: NextPage<HomeProps> = (props) => {
+  const {browserTimingScript} = props
+  const id = useId()
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,6 +21,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <Script id={id} strategy="afterInteractive">
+          {browserTimingScript}
+        </Script>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
@@ -67,6 +78,19 @@ const Home: NextPage = () => {
       </footer>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+  const newrelic = await import("newrelic")
+  const browserTimingScript = await newrelic.getBrowserTimingHeader({
+    hasToRemoveScriptWrapper: true,
+  })
+
+  return {
+    props: {
+      browserTimingScript
+    }
+  }
 }
 
 export default Home
