@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:newrelic": "NODE_OPTIONS='--require @newrelic/next' next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_OPTIONS='--require @newrelic/next' next start",
     "lint": "next lint"
   },
   "dependencies": {
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "newrelic": "^9.0.0"
+    "newrelic": "^9.0.0",
+    "@types/newrelic": "^7.0.3",
+    "@newrelic/next": "^0.3.0"
   },
   "devDependencies": {
     "@types/node": "18.7.6",
