@@ -20,13 +20,11 @@ const getInitialProps: typeof MyError["getInitialProps"] = (context) => {
   const {res, err} = context
   const error: Error = err ?? new Error("unknown error")
 
-  console.log("getInitialProps")
-  if (typeof window === "undefined") {
-    const newrelic = require('newrelic');
-    newrelic.noticeError(error);
-  } else {
-    window.newrelic.noticeError(error);
-  }
+  const newrelic = typeof window === "undefined"
+    ? require("newrelic")
+    : window.newrelic
+
+  newrelic.noticeError(error)
 
   const statusCode = res ? res.statusCode : err ? err.statusCode ?? 404 : 404;
   return { statusCode };
