@@ -15,7 +15,9 @@
     "react-dom": "18.2.0",
     "newrelic": "^9.0.0",
     "@types/newrelic": "^7.0.3",
-    "@newrelic/next": "^0.3.0"
+    "@newrelic/next": "^0.3.0",
+    "axios": "^0.27.2",
+    "@types/axios": "^0.14.0"
   },
   "devDependencies": {
     "@types/node": "18.7.6",
