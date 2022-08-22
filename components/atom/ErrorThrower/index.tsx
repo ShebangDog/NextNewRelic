@@ -3,7 +3,10 @@ import { FC, PropsWithChildren } from "react"
 export const ErrorThrower: FC<PropsWithChildren> = (props) => {
   const {children} = props
   const handleClick = () => {
-    window.newrelic.addPageAction('Click ErrorThrower')
+    window.newrelic.addToTrace({
+      name: "addToTrace: ErrorThrower",
+      start: Date.now()
+    })
 
     throw new Error(`ErrorThrower: ${children}`)
   }
