@@ -6,7 +6,7 @@
     "dev": "next dev",
     "dev:newrelic": "NODE_OPTIONS='--require @newrelic/next' next dev",
     "build": "next build",
-    "start": "NODE_OPTIONS='--require @newrelic/next' next start",
+    "start": "node -r newrelic node_modules/.bin/next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
     "@types/react-dom": "18.0.6",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
-    "typescript": "4.7.4"
+    "typescript": "4.7.4",
+    "@newrelic/publish-sourcemap": "^5.1.0"
   }
 }
