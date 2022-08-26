@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -68,5 +68,19 @@ const Home: NextPage = () => {
     </div>
   )
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const newrelic = await import("newrelic")
+
+  const error = new Error("error")
+  newrelic.noticeError(error)
+
+  return {
+    props: {
+
+    }
+  }
+}
+
 
 export default Home
