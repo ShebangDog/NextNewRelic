@@ -1,8 +1,8 @@
 const UnknownActionError = require("../../error")
 
 /**
- * @param rawAction {string | import("./index.d.ts").ActionKind}
- * @return {import("./index.d.ts")}
+ * @param rawAction {string | ActionKind}
+ * @return {ActionKind}
  *
  **/
 const Action = (rawAction) => {

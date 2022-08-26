@@ -1,4 +1,4 @@
-/** @type import("../index.d.ts").ActionKindList */
+/** @type ActionKindList */
 const actionKindList = ["overwrite", "publish", "remove"]
 const flattenActionList = actionKindList.map(action => `"${action}"`).join(" or ")
 
