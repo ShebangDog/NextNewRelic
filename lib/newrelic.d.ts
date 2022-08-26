@@ -3,4 +3,5 @@ declare module "newrelic" {
     nonce?: string
     hasToRemoveScriptWrapper?: boolean
   }): string
+  export function noticeError(error: Error): void
 }

@@ -57,5 +57,8 @@ exports.config = {
       'response.headers.setCookie*',
       'response.headers.x*'
     ]
+  },
+  error_collector: {
+    ignore_status_codes: [404, 500]
   }
 }

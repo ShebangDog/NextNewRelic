@@ -47,6 +47,9 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
     hasToRemoveScriptWrapper: true,
   })
 
+  const error = new Error("error")
+  newrelic.noticeError(error)
+
   return {
     props: {
       browserTimingScript
